@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard | RoadMaster</title>
+<meta name="description" content="RoadMaster administrator dashboard demo — bookings, vehicles, drivers and staff overview.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <img src="assets/logo_final.png" alt="RoadMaster Taxi and For Hire Services Company logo">
+        <span class="brand-name">RoadMaster<small>Taxi &amp; For Hire Services</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="vehicles.html">Vehicles</a>
+        <a href="cross-border.html">Cross-Border</a>
+        <a href="team.html">Team</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-cta">
+        <a href="tracking.html" class="btn btn-outline btn-sm">Track Trip</a>
+        <a href="booking.html" class="btn btn-primary btn-sm">Book a Trip</a>
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="vehicles.html">Vehicles</a>
+      <a href="cross-border.html">Cross-Border</a>
+      <a href="team.html">Team</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="contact.html">Contact</a>
+      <a href="tracking.html">Track My Trip</a>
+      <a href="booking.html" style="color:#E8850A;">Book a Trip</a>
+    </div>
+  </header>
+<main id="main">
+
+<section style="padding-top:40px; padding-bottom:8px;">
+  <div class="container">
+    <div class="route-dash"><span>Administrator</span></div>
+    <h1 style="font-size:var(--step-3);">Admin dashboard</h1>
+    <div class="demo-flag" style="margin-top:8px; max-width:680px;">
+      <span aria-hidden="true">&#9432;</span>
+      <span>Demo dashboard &mdash; read-only oversight view. Booking actions (quotations, assignments, sending) happen on the Staff Dashboard.</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:16px;">
+  <div class="container">
+    <div class="admin-tabs" role="tablist">
+      <button class="admin-tab active" data-tab="overview">Dashboard</button>
+      <button class="admin-tab" data-tab="bookings">Bookings</button>
+      <button class="admin-tab" data-tab="vehicles">Vehicles</button>
+      <button class="admin-tab" data-tab="drivers">Drivers</button>
+      <button class="admin-tab" data-tab="staff">Staff</button>
+    </div>
+
+    <div id="tab-overview" class="admin-panel">
+      <div id="kpi-grid" class="kpi-grid"></div>
+
+      <div class="card" style="margin-top:24px;">
+        <h4 style="margin-bottom:16px;">Recent bookings</h4>
+        <div id="recent-bookings"></div>
+      </div>
+    </div>
+
+    <div id="tab-bookings" class="admin-panel hidden">
+      <div class="admin-split">
+        <div id="admin-booking-list" class="staff-list"></div>
+        <div id="admin-booking-detail" class="card">
+          <p class="muted text-center" style="padding:60px 20px;">Select a booking to view details.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-vehicles" class="admin-panel hidden">
+      <div id="admin-vehicle-grid" class="vehicle-grid"></div>
+    </div>
+
+    <div id="tab-drivers" class="admin-panel hidden">
+      <div id="admin-driver-grid" class="team-grid"></div>
+    </div>
+
+    <div id="tab-staff" class="admin-panel hidden">
+      <div id="admin-staff-grid" class="team-grid"></div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="brand" style="margin-bottom:14px;">
+            <img src="assets/logo_final.png" alt="RoadMaster logo">
+            <span class="brand-name">RoadMaster<small>Taxi &amp; For Hire Services</small></span>
+          </a>
+          <p>Taxi, 7-seater, truck and cross-border transportation based in Matsapha, Eswatini.</p>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Get around</h4>
+          <ul class="footer-links">
+            <li><a href="booking.html">Book a Trip</a></li>
+            <li><a href="tracking.html">Track My Trip</a></li>
+            <li><a href="cross-border.html">Cross-Border Travel</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>2nd Floor, Office No. 3<br>Mhlakuvane Street, Ndlavela House<br>Manzini, Eswatini</p>
+          <p>7819 7490 &middot; 7934 0717<br>roadmaster865@gmail.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 RoadMaster Taxi and For Hire Services Company.</span>
+        <span>Stage 1 demo build &mdash; not a live booking system.</span>
+      </div>
+    </div>
+  </footer>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+function renderOverview() {
+  const bookings = RM.getBookings();
+  const vehicles = RM.getVehiclesWithStatus();
+  const counts = {
+    total: bookings.length,
+    pending: bookings.filter(b => b.status === 'pending').length,
+    confirmed: bookings.filter(b => b.status === 'confirmed').length,
+    active: bookings.filter(b => b.status === 'confirmed').length,
+    availableVehicles: vehicles.filter(v => v.status === 'available').length
+  };
+  document.getElementById('kpi-grid').innerHTML = `
+    <div class="kpi-card"><div class="kpi-num">${counts.total}</div><div class="kpi-label">Total bookings</div></div>
+    <div class="kpi-card"><div class="kpi-num">${counts.pending}</div><div class="kpi-label">Pending</div></div>
+    <div class="kpi-card"><div class="kpi-num">${counts.confirmed}</div><div class="kpi-label">Confirmed</div></div>
+    <div class="kpi-card"><div class="kpi-num">${counts.active}</div><div class="kpi-label">Active trips</div></div>
+    <div class="kpi-card"><div class="kpi-num">${counts.availableVehicles}/${vehicles.length}</div><div class="kpi-label">Vehicles available</div></div>
+  `;
+  document.getElementById('recent-bookings').innerHTML = bookings.slice(0, 6).map(b => `
+    <div class="recent-row">
+      <div class="recent-row-left">
+        <span class="recent-ref">${b.ref}</span>
+        <span class="recent-name">${b.customer.name}</span>
+      </div>
+      ${rmStatusPill(b.status)}
+    </div>
+  `).join('');
+}
+
+function renderAdminBookingList() {
+  const list = document.getElementById('admin-booking-list');
+  const bookings = RM.getBookings();
+  list.innerHTML = bookings.map(b => `
+    <button class="staff-item" data-ref="${b.ref}">
+      <div class="staff-item-top">
+        <span class="staff-item-ref">${b.ref}</span>
+        ${rmStatusPill(b.status)}
+      </div>
+      <div class="staff-item-name">${b.customer.name}</div>
+      <div class="staff-item-meta"><span>${b.service}</span></div>
+    </button>
+  `).join('');
+  list.querySelectorAll('.staff-item').forEach(btn => {
+    btn.addEventListener('click', () => {
+      list.querySelectorAll('.staff-item').forEach(x => x.classList.remove('active'));
+      btn.classList.add('active');
+      renderAdminBookingDetail(btn.dataset.ref);
+    });
+  });
+}
+
+function renderAdminBookingDetail(ref) {
+  const b = RM.getBooking(ref);
+  const detail = document.getElementById('admin-booking-detail');
+  if (!b) return;
+  const veh = RM.vehicleById(b.vehicleId);
+  const drv = RM.driverById(b.driverId);
+  detail.innerHTML = `
+    <div class="detail-head">
+      <div><h2>${b.ref}</h2><span class="muted small">${b.customer.name}</span></div>
+      ${rmStatusPill(b.status)}
+    </div>
+    <div class="info-grid" style="margin-bottom:22px;">
+      <div><div class="quote-label">Service</div><div class="quote-value">${b.service}</div></div>
+      <div><div class="quote-label">Route</div><div class="quote-value">${b.pickup} \u2192 ${b.destination}</div></div>
+      <div><div class="quote-label">Price</div><div class="quote-value">${b.price || '\u2014'}</div></div>
+      <div><div class="quote-label">Preferred communication</div><div class="quote-value">${commLabelAdmin(b.customer.pref)}</div></div>
+      <div><div class="quote-label">Vehicle</div><div class="quote-value">${veh ? veh.name : 'Not assigned'}</div></div>
+      <div><div class="quote-label">Driver</div><div class="quote-value">${drv ? drv.label : 'Not assigned'}</div></div>
+    </div>
+    <div class="detail-section">
+      <h4>Communication log</h4>
+      <ul class="history-list">
+        ${b.log.slice().reverse().map(l => `
+          <li>
+            <span class="history-icon">${rmCommIcon(l.actor)}</span>
+            <span><span class="history-actor">${l.actor}</span> &mdash; ${l.text}<br><span class="history-time">${l.time}</span></span>
+          </li>
+        `).join('')}
+      </ul>
+    </div>
+    <a href="staff.html" class="btn btn-outline btn-sm" style="margin-top:8px;">Open in Staff Dashboard</a>
+  `;
+}
+function commLabelAdmin(pref) {
+  if (pref === 'whatsapp') return 'WhatsApp';
+  if (pref === 'email') return 'Email';
+  return 'WhatsApp + Email';
+}
+
+function renderAdminVehicles() {
+  const grid = document.getElementById('admin-vehicle-grid');
+  grid.innerHTML = RM.getVehiclesWithStatus().map(v => `
+    <div class="vehicle-card">
+      <img src="${v.image}" alt="${v.name}">
+      <div class="vehicle-card-body">
+        <div class="vehicle-card-top"><h4>${v.name}</h4>${rmVehiclePill(v.status)}</div>
+        <div class="vehicle-meta">${v.id}</div>
+        <div class="vehicle-meta" style="font-weight:600; color:var(--rm-charcoal);">${v.rate}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderAdminDrivers() {
+  document.getElementById('admin-driver-grid').innerHTML = RM.getDriversWithStatus().map(d => `
+    <div class="team-card">
+      <img src="${d.photo}" alt="RoadMaster ${d.label}">
+      <div class="team-card-body">
+        <h4>${d.label}</h4>
+        <p>${d.status}</p>
+      </div>
+    </div>
+  `).join('');
+}
+function renderAdminStaff() {
+  document.getElementById('admin-staff-grid').innerHTML = RM.team.map(t => `
+    <div class="team-card">
+      <img src="${t.photo}" alt="${t.name}">
+      <div class="team-card-body"><h4>${t.name}</h4><p>${t.role}</p></div>
+    </div>
+  `).join('');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderOverview();
+  renderAdminBookingList();
+  renderAdminVehicles();
+  renderAdminDrivers();
+  renderAdminStaff();
+
+  document.querySelectorAll('.admin-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelectorAll('.admin-panel').forEach(p => p.classList.add('hidden'));
+      document.getElementById('tab-' + tab.dataset.tab).classList.remove('hidden');
+    });
+  });
+});
+</script>
+</body>
+</html>

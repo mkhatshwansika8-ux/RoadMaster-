@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff Dashboard | RoadMaster</title>
+<meta name="description" content="RoadMaster staff dashboard demo — review bookings, create quotations, assign drivers and vehicles.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <img src="assets/logo_final.png" alt="RoadMaster Taxi and For Hire Services Company logo">
+        <span class="brand-name">RoadMaster<small>Taxi &amp; For Hire Services</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="vehicles.html">Vehicles</a>
+        <a href="cross-border.html">Cross-Border</a>
+        <a href="team.html">Team</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-cta">
+        <a href="tracking.html" class="btn btn-outline btn-sm">Track Trip</a>
+        <a href="booking.html" class="btn btn-primary btn-sm">Book a Trip</a>
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="vehicles.html">Vehicles</a>
+      <a href="cross-border.html">Cross-Border</a>
+      <a href="team.html">Team</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="contact.html">Contact</a>
+      <a href="tracking.html">Track My Trip</a>
+      <a href="booking.html" style="color:#E8850A;">Book a Trip</a>
+    </div>
+  </header>
+<main id="main">
+
+<section style="padding-top:40px; padding-bottom:16px;">
+  <div class="container">
+    <div class="route-dash"><span>Staff dashboard</span></div>
+    <h1 style="font-size:var(--step-3);">Booking requests</h1>
+    <div class="demo-flag" style="margin-top:8px; max-width:640px;">
+      <span aria-hidden="true">&#9432;</span>
+      <span>Demo dashboard &mdash; actions here update the shared demo data, so they're reflected on the Admin dashboard and public Vehicles page too.</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:8px;">
+  <div class="container">
+    <div class="staff-layout">
+      <div id="staff-list" class="staff-list"></div>
+      <div id="staff-detail" class="staff-detail card">
+        <p class="muted text-center" style="padding:60px 20px;">Select a booking from the list to view details.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="brand" style="margin-bottom:14px;">
+            <img src="assets/logo_final.png" alt="RoadMaster logo">
+            <span class="brand-name">RoadMaster<small>Taxi &amp; For Hire Services</small></span>
+          </a>
+          <p>Taxi, 7-seater, truck and cross-border transportation based in Matsapha, Eswatini.</p>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Get around</h4>
+          <ul class="footer-links">
+            <li><a href="booking.html">Book a Trip</a></li>
+            <li><a href="tracking.html">Track My Trip</a></li>
+            <li><a href="cross-border.html">Cross-Border Travel</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>2nd Floor, Office No. 3<br>Mhlakuvane Street, Ndlavela House<br>Manzini, Eswatini</p>
+          <p>7819 7490 &middot; 7934 0717<br>roadmaster865@gmail.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 RoadMaster Taxi and For Hire Services Company.</span>
+        <span>Stage 1 demo build &mdash; not a live booking system.</span>
+      </div>
+    </div>
+  </footer>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+let activeRef = null;
+
+function commIcon(pref) {
+  if (pref === 'whatsapp') return '\uD83D\uDCAC';
+  if (pref === 'email') return '\u2709\uFE0F';
+  return '\uD83D\uDCAC\u2709\uFE0F';
+}
+function commLabel(pref) {
+  if (pref === 'whatsapp') return 'WhatsApp';
+  if (pref === 'email') return 'Email';
+  return 'WhatsApp + Email';
+}
+
+function renderStaffList() {
+  const list = document.getElementById('staff-list');
+  const bookings = RM.getBookings();
+  list.innerHTML = bookings.map(b => `
+    <button class="staff-item ${b.ref === activeRef ? 'active' : ''}" data-ref="${b.ref}">
+      <div class="staff-item-top">
+        <span class="staff-item-ref">${b.ref}</span>
+        ${rmStatusPill(b.status)}
+      </div>
+      <div class="staff-item-name">${b.customer.name}</div>
+      <div class="staff-item-meta">
+        <span>${commIcon(b.customer.pref)} ${commLabel(b.customer.pref)}</span>
+        <span>&middot;</span>
+        <span>${b.service}</span>
+      </div>
+    </button>
+  `).join('');
+  list.querySelectorAll('.staff-item').forEach(btn => {
+    btn.addEventListener('click', () => selectBooking(btn.dataset.ref));
+  });
+}
+
+function waTemplate(b) {
+  return `Hi ${b.customer.name}, this is RoadMaster.\n\nYour trip ${b.pickup} \u2192 ${b.destination} on ${b.travelDate} is quoted at ${b.price || '[price]'}.\n\nView and accept: roadmaster.example/quote/${b.ref.toLowerCase()}-secure-token`;
+}
+function emailTemplate(b) {
+  return `Subject: Your RoadMaster quotation (${b.ref})\n\nDear ${b.customer.name},\n\nThank you for your booking request. Your trip from ${b.pickup} to ${b.destination} on ${b.travelDate} is quoted at ${b.price || '[price]'}.\n\nPlease view and accept your quotation here:\nroadmaster.example/quote/${b.ref.toLowerCase()}-secure-token\n\nRegards,\nRoadMaster Taxi and For Hire Services`;
+}
+
+function selectBooking(ref) {
+  activeRef = ref;
+  renderStaffList();
+  const b = RM.getBooking(ref);
+  const detail = document.getElementById('staff-detail');
+  if (!b) { detail.innerHTML = '<p class="muted">Booking not found.</p>'; return; }
+
+  const vehicles = RM.getVehiclesWithStatus();
+  const vehicleOptions = vehicles.map(v => `<option value="${v.id}" ${b.vehicleId === v.id ? 'selected' : ''}>${v.name} \u2014 ${v.status}</option>`).join('');
+  const driverOptions = RM.getDriversWithStatus().map(d => `<option value="${d.id}" ${b.driverId === d.id ? 'selected' : ''}>${d.label} \u2014 ${d.status}</option>`).join('');
+
+  const businessBits = b.customer.company ? `
+    <div><div class="quote-label">Company</div><div class="quote-value">${b.customer.company}</div></div>
+    <div><div class="quote-label">Contact person</div><div class="quote-value">${b.customer.contact || '\u2014'}</div></div>
+    ${b.customer.orderRef ? `<div><div class="quote-label">Order reference</div><div class="quote-value">${b.customer.orderRef}</div></div>` : ''}
+  ` : '';
+
+  detail.innerHTML = `
+    <div class="detail-head">
+      <div>
+        <h2>${b.ref}</h2>
+        <span class="muted small">Created ${new Date(b.createdAt).toLocaleDateString()}</span>
+      </div>
+      ${rmStatusPill(b.status)}
+    </div>
+
+    <div class="detail-section" style="border-top:none; margin-top:0; padding-top:0;">
+      <h4>Customer</h4>
+      <div class="info-grid">
+        <div><div class="quote-label">Name</div><div class="quote-value">${b.customer.name}</div></div>
+        <div><div class="quote-label">Preferred communication</div><div class="quote-value">${commIcon(b.customer.pref)} ${commLabel(b.customer.pref)}</div></div>
+        <div><div class="quote-label">Phone</div><div class="quote-value">${b.customer.phone || '\u2014'}</div></div>
+        <div><div class="quote-label">Email</div><div class="quote-value">${b.customer.email || '\u2014'}</div></div>
+        ${businessBits}
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <h4>Trip</h4>
+      <div class="info-grid">
+        <div><div class="quote-label">Service</div><div class="quote-value">${b.service}</div></div>
+        <div><div class="quote-label">Route</div><div class="quote-value">${b.pickup} \u2192 ${b.destination}</div></div>
+        <div><div class="quote-label">Travel date</div><div class="quote-value">${b.travelDate}${b.returnDate ? ' \u2013 ' + b.returnDate : ''} (${b.tripType})</div></div>
+        <div><div class="quote-label">Passengers</div><div class="quote-value">${b.passengers || '\u2014'}</div></div>
+      </div>
+      ${b.notes ? `<p class="small muted" style="margin-top:12px;"><strong>Notes:</strong> ${b.notes}</p>` : ''}
+    </div>
+
+    <div class="detail-section">
+      <h4>Assign vehicle &amp; driver</h4>
+      <div class="assign-row">
+        <div class="field">
+          <label for="assign-vehicle">Vehicle</label>
+          <select id="assign-vehicle">${vehicleOptions}</select>
+        </div>
+        <button id="btn-assign-vehicle" class="btn btn-outline btn-sm">Assign vehicle</button>
+      </div>
+      <div class="assign-row">
+        <div class="field">
+          <label for="assign-driver">Driver</label>
+          <select id="assign-driver">${driverOptions}</select>
+        </div>
+        <button id="btn-assign-driver" class="btn btn-outline btn-sm">Assign driver</button>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <h4>Quotation</h4>
+      <div class="assign-row">
+        <div class="field">
+          <label for="quote-price">Price</label>
+          <input type="text" id="quote-price" value="${b.price || ''}" placeholder="e.g. E1,500">
+        </div>
+        <button id="btn-create-quote" class="btn btn-dark btn-sm">Create quotation</button>
+      </div>
+
+      <div class="field" style="max-width:320px;">
+        <label>Send via</label>
+        <div class="choice-group">
+          <div class="choice"><input type="radio" name="send-via" id="send-wa" value="whatsapp" ${b.customer.pref !== 'email' ? 'checked' : ''}><label for="send-wa">WhatsApp</label></div>
+          <div class="choice"><input type="radio" name="send-via" id="send-em" value="email" ${b.customer.pref === 'email' ? 'checked' : ''}><label for="send-em">Email</label></div>
+        </div>
+      </div>
+      <div class="flex gap-12" style="margin-bottom:6px;">
+        <button id="btn-send-comm" class="btn btn-primary btn-sm">Send quotation</button>
+        <button id="btn-preview-comm" class="btn btn-ghost btn-sm">Preview message</button>
+      </div>
+      <div id="comm-preview" class="comm-preview"></div>
+    </div>
+
+    <div class="detail-section">
+      <h4>Booking status</h4>
+      <div class="flex gap-12 flex-wrap">
+        <button id="btn-confirm" class="btn btn-outline btn-sm" ${b.status === 'confirmed' || b.status === 'completed' ? 'disabled' : ''}>Mark as confirmed</button>
+        <button id="btn-complete" class="btn btn-outline btn-sm" ${b.status !== 'confirmed' ? 'disabled' : ''}>Mark trip completed</button>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <h4>Communication history</h4>
+      <ul class="history-list">
+        ${b.log.slice().reverse().map(l => `
+          <li>
+            <span class="history-icon">${rmCommIcon(l.actor)}</span>
+            <span>
+              <span class="history-actor">${l.actor}</span> &mdash; ${l.text}<br>
+              <span class="history-time">${l.time}</span>
+            </span>
+          </li>
+        `).join('')}
+      </ul>
+    </div>
+  `;
+
+  document.getElementById('btn-assign-vehicle').addEventListener('click', () => {
+    const vid = document.getElementById('assign-vehicle').value;
+    const veh = RM.vehicleById(vid);
+    RM.updateBooking(b.ref, { vehicleId: vid }, { actor: 'Staff', text: `Vehicle assigned: ${veh.name}.` });
+    RM.setVehicleStatus(vid, 'booked');
+    rmToast('Vehicle assigned.');
+    selectBooking(b.ref);
+  });
+  document.getElementById('btn-assign-driver').addEventListener('click', () => {
+    const did = document.getElementById('assign-driver').value;
+    const drv = RM.driverById(did);
+    RM.updateBooking(b.ref, { driverId: did }, { actor: 'Staff', text: `Driver assigned: ${drv.label}.` });
+    RM.setDriverStatus(did, 'on trip');
+    rmToast('Driver assigned.');
+    selectBooking(b.ref);
+  });
+  document.getElementById('btn-create-quote').addEventListener('click', () => {
+    const price = document.getElementById('quote-price').value.trim();
+    if (!price) { rmToast('Enter a price first.', 'error'); return; }
+    const wasPending = b.status === 'pending';
+    RM.updateBooking(b.ref, { status: wasPending ? 'quoted' : b.status, price }, { actor: 'Staff', text: `Quotation created (${price}).` });
+    rmToast('Quotation created.');
+    selectBooking(b.ref);
+  });
+  document.getElementById('btn-preview-comm').addEventListener('click', () => {
+    const via = document.querySelector('input[name="send-via"]:checked').value;
+    const preview = document.getElementById('comm-preview');
+    preview.textContent = via === 'email' ? emailTemplate(b) : waTemplate(b);
+    preview.classList.add('show');
+  });
+  document.getElementById('btn-send-comm').addEventListener('click', () => {
+    const via = document.querySelector('input[name="send-via"]:checked').value;
+    const label = via === 'email' ? 'Email' : 'WhatsApp';
+    RM.addLog(b.ref, { actor: label, text: 'Quotation sent to customer.' });
+    rmToast(`${label} quotation prepared successfully.`);
+    selectBooking(b.ref);
+  });
+  document.getElementById('btn-confirm').addEventListener('click', () => {
+    RM.updateBooking(b.ref, { status: 'confirmed' }, { actor: 'Staff', text: 'Booking confirmed.' });
+    rmToast('Booking confirmed.');
+    selectBooking(b.ref);
+  });
+  document.getElementById('btn-complete').addEventListener('click', () => {
+    RM.updateBooking(b.ref, { status: 'completed' }, { actor: 'System', text: 'Trip completed.' });
+    rmToast('Trip marked as completed.');
+    selectBooking(b.ref);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderStaffList();
+  const bookings = RM.getBookings();
+  if (bookings.length) selectBooking(bookings[0].ref);
+});
+</script>
+</body>
+</html>

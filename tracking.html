@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Track My Trip | RoadMaster</title>
+<meta name="description" content="Track your RoadMaster trip in real time.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<style>
+.link-btn { background:none; border:none; padding:0; color:var(--rm-orange-deep); font-weight:700; text-decoration:underline; cursor:pointer; font-size:inherit; font-family:inherit; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <img src="assets/logo_final.png" alt="RoadMaster Taxi and For Hire Services Company logo">
+        <span class="brand-name">RoadMaster<small>Taxi &amp; For Hire Services</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="vehicles.html">Vehicles</a>
+        <a href="cross-border.html">Cross-Border</a>
+        <a href="team.html">Team</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-cta">
+        <a href="tracking.html" class="btn btn-outline btn-sm">Track Trip</a>
+        <a href="booking.html" class="btn btn-primary btn-sm">Book a Trip</a>
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="vehicles.html">Vehicles</a>
+      <a href="cross-border.html">Cross-Border</a>
+      <a href="team.html">Team</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="contact.html">Contact</a>
+      <a href="tracking.html">Track My Trip</a>
+      <a href="booking.html" style="color:#E8850A;">Book a Trip</a>
+    </div>
+  </header>
+<main id="main">
+
+<section style="padding-top:56px; padding-bottom:16px;">
+  <div class="container" style="max-width:760px;">
+    <div class="route-dash"><span>Track my trip</span></div>
+    <div class="demo-flag" style="margin-bottom:8px;">
+      <span aria-hidden="true">&#9432;</span>
+      <span>Visual demonstration only &mdash; no real GPS is used. In production, this map updates from live driver location data (see the Driver Tracking Architecture in the written blueprint).</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:8px;">
+  <div class="container" style="max-width:760px;">
+
+    <div id="track-lookup" class="card">
+      <h4 style="margin-bottom:16px;">Find your trip</h4>
+      <div class="field-row" style="align-items:flex-end;">
+        <div class="field" style="margin-bottom:0;">
+          <label for="track-ref">Booking reference</label>
+          <input type="text" id="track-ref" placeholder="RM-2026-0001">
+        </div>
+        <div class="field" style="margin-bottom:0;">
+          <button id="track-go" class="btn btn-primary btn-block">Track trip</button>
+        </div>
+      </div>
+      <p class="small muted" style="margin-top:14px;">Demo tip: try <button class="link-btn" data-ref="RM-2026-0001">RM-2026-0001</button> (driver assigned, en route) or <button class="link-btn" data-ref="RM-2026-0002">RM-2026-0002</button> (not yet confirmed).</p>
+    </div>
+
+    <div id="track-content" class="hidden" style="margin-top:24px;">
+      <div class="card" style="padding:0; overflow:hidden;">
+        <div style="padding:22px 28px; border-bottom:1px solid var(--rm-line); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div>
+            <div style="font-weight:700; font-family:var(--font-display);" id="tr-ref">RM-2026-0000</div>
+            <div class="small muted" id="tr-route">&mdash;</div>
+          </div>
+          <span id="tr-status-pill"></span>
+        </div>
+
+        <div id="tr-map-wrap" style="position:relative; height:340px; background:#DCE7DE;">
+          <svg id="tr-map" viewBox="0 0 600 340" style="width:100%; height:100%; display:block;">
+            <rect width="600" height="340" fill="#E4EEE3"/>
+            <path d="M 40 300 Q 200 100 300 170 T 560 40" stroke="#C9D6CB" stroke-width="18" fill="none" stroke-linecap="round"/>
+            <path d="M 40 300 Q 200 100 300 170 T 560 40" stroke="#fff" stroke-width="3" stroke-dasharray="10 10" fill="none" stroke-linecap="round"/>
+            <circle cx="40" cy="300" r="9" fill="#1C222B"/>
+            <text x="54" y="304" font-size="13" font-family="Inter, sans-serif" fill="#1C222B" font-weight="600">Pick-up</text>
+            <circle cx="560" cy="40" r="9" fill="#2E7D46"/>
+            <text x="500" y="26" font-size="13" font-family="Inter, sans-serif" fill="#1C222B" font-weight="600">Destination</text>
+            <g id="tr-driver-marker" transform="translate(300,170)">
+              <circle r="16" fill="#E8850A" opacity="0.25"/>
+              <circle r="10" fill="#E8850A" stroke="#fff" stroke-width="3"/>
+            </g>
+          </svg>
+          <div style="position:absolute; top:14px; left:14px; background:#fff; padding:8px 14px; border-radius:100px; font-size:0.8rem; font-weight:600; box-shadow:var(--shadow-card);" id="tr-eta">ETA &mdash;</div>
+        </div>
+
+        <div style="padding:24px 28px;">
+          <div class="quote-grid">
+            <div>
+              <div class="quote-label">Driver</div>
+              <div class="quote-value" id="tr-driver">&mdash;</div>
+            </div>
+            <div>
+              <div class="quote-label">Vehicle</div>
+              <div class="quote-value" id="tr-vehicle">&mdash;</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="track-unconfirmed" class="card hidden text-center" style="margin-top:24px; padding:40px;">
+      <h3>Tracking not yet available</h3>
+      <p class="muted">This trip hasn't been confirmed yet, so a driver and vehicle haven't been assigned. Tracking activates once your booking is confirmed.</p>
+    </div>
+
+    <div id="track-notfound" class="card hidden text-center" style="margin-top:24px; padding:40px;">
+      <h3>Reference not found</h3>
+      <p class="muted">Double-check your booking reference, or try one of the demo references above.</p>
+    </div>
+
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="brand" style="margin-bottom:14px;">
+            <img src="assets/logo_final.png" alt="RoadMaster logo">
+            <span class="brand-name">RoadMaster<small>Taxi &amp; For Hire Services</small></span>
+          </a>
+          <p>Taxi, 7-seater, truck and cross-border transportation based in Matsapha, Eswatini.</p>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Get around</h4>
+          <ul class="footer-links">
+            <li><a href="booking.html">Book a Trip</a></li>
+            <li><a href="tracking.html">Track My Trip</a></li>
+            <li><a href="cross-border.html">Cross-Border Travel</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>2nd Floor, Office No. 3<br>Mhlakuvane Street, Ndlavela House<br>Manzini, Eswatini</p>
+          <p>7819 7490 &middot; 7934 0717<br>roadmaster865@gmail.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 RoadMaster Taxi and For Hire Services Company.</span>
+        <span>Stage 1 demo build &mdash; not a live booking system.</span>
+      </div>
+    </div>
+  </footer>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+function showPanel(id) {
+  ['track-content','track-unconfirmed','track-notfound'].forEach(p => {
+    document.getElementById(p).classList.toggle('hidden', p !== id);
+  });
+}
+
+function loadTrip(ref) {
+  const booking = RM.getBooking(ref.trim());
+  if (!booking) { showPanel('track-notfound'); return; }
+
+  if (booking.status !== 'confirmed' && booking.status !== 'completed') {
+    showPanel('track-unconfirmed');
+    return;
+  }
+
+  showPanel('track-content');
+  document.getElementById('tr-ref').textContent = booking.ref;
+  document.getElementById('tr-route').textContent = `${booking.pickup} \u2192 ${booking.destination}`;
+  document.getElementById('tr-status-pill').innerHTML = booking.status === 'completed'
+    ? '<span class="pill pill-neutral"><span class="pill-dot"></span>Trip completed</span>'
+    : '<span class="pill pill-green"><span class="pill-dot"></span>En route</span>';
+
+  const driver = RM.driverById(booking.driverId);
+  const veh = RM.vehicleById(booking.vehicleId);
+  document.getElementById('tr-driver').textContent = driver ? driver.label : 'Not yet assigned';
+  document.getElementById('tr-vehicle').textContent = veh ? veh.name : 'Not yet assigned';
+  document.getElementById('tr-eta').textContent = booking.status === 'completed' ? 'Trip completed' : 'ETA 18 min';
+
+  const marker = document.getElementById('tr-driver-marker');
+  if (booking.status === 'completed') {
+    marker.setAttribute('transform', 'translate(560,40)');
+  } else {
+    marker.setAttribute('transform', 'translate(300,170)');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('track-go').addEventListener('click', () => {
+    const val = document.getElementById('track-ref').value;
+    if (!val.trim()) { rmToast('Enter a booking reference.', 'error'); return; }
+    loadTrip(val);
+  });
+  document.querySelectorAll('.link-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.getElementById('track-ref').value = btn.dataset.ref;
+      loadTrip(btn.dataset.ref);
+    });
+  });
+
+  const qref = rmQueryParam('ref');
+  if (qref) {
+    document.getElementById('track-ref').value = qref;
+    loadTrip(qref);
+  }
+});
+</script>
+</body>
+</html>

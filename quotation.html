@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quotation | RoadMaster</title>
+<meta name="description" content="Demo quotation page for a RoadMaster booking.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <img src="assets/logo_final.png" alt="RoadMaster Taxi and For Hire Services Company logo">
+        <span class="brand-name">RoadMaster<small>Taxi &amp; For Hire Services</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="vehicles.html">Vehicles</a>
+        <a href="cross-border.html">Cross-Border</a>
+        <a href="team.html">Team</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-cta">
+        <a href="tracking.html" class="btn btn-outline btn-sm">Track Trip</a>
+        <a href="booking.html" class="btn btn-primary btn-sm">Book a Trip</a>
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="vehicles.html">Vehicles</a>
+      <a href="cross-border.html">Cross-Border</a>
+      <a href="team.html">Team</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="contact.html">Contact</a>
+      <a href="tracking.html">Track My Trip</a>
+      <a href="booking.html" style="color:#E8850A;">Book a Trip</a>
+    </div>
+  </header>
+<main id="main">
+
+<section style="padding-top:56px; padding-bottom:16px;">
+  <div class="container" style="max-width:760px;">
+    <div class="route-dash"><span>Quotation</span></div>
+    <div class="demo-flag" style="margin-bottom:24px;">
+      <span aria-hidden="true">&#9432;</span>
+      <span>Demo quotation &mdash; this simulates the secure link a customer would receive by WhatsApp or Email (e.g. <code>/quote/&lt;secure-token&gt;</code>).</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="container" style="max-width:760px;">
+    <div id="quote-not-found" class="card hidden text-center" style="padding:48px;">
+      <h3>No booking reference given</h3>
+      <p class="muted">Start from the booking form to generate a demo quotation.</p>
+      <a href="booking.html" class="btn btn-primary">Book a trip</a>
+    </div>
+
+    <div id="quote-content" class="hidden">
+      <div class="card" style="padding:0; overflow:hidden;">
+        <div style="background:var(--rm-charcoal); color:#fff; padding:28px 32px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+          <div class="flex items-center gap-12">
+            <img src="assets/logo_final.png" alt="RoadMaster" style="height:38px; border-radius:4px;">
+            <div>
+              <div style="font-family:var(--font-display); font-weight:700; font-size:1.05rem;">RoadMaster Quotation</div>
+              <div style="color:#9AA1AC; font-size:0.82rem;" id="q-ref-top">RM-2026-0000</div>
+            </div>
+          </div>
+          <span id="q-status-pill"></span>
+        </div>
+
+        <div style="padding:32px;">
+          <div class="quote-grid">
+            <div>
+              <div class="quote-label">Customer</div>
+              <div class="quote-value" id="q-customer">&mdash;</div>
+            </div>
+            <div>
+              <div class="quote-label">Service</div>
+              <div class="quote-value" id="q-service">&mdash;</div>
+            </div>
+            <div>
+              <div class="quote-label">Route</div>
+              <div class="quote-value" id="q-route">&mdash;</div>
+            </div>
+            <div>
+              <div class="quote-label">Travel date</div>
+              <div class="quote-value" id="q-dates">&mdash;</div>
+            </div>
+            <div>
+              <div class="quote-label">Vehicle</div>
+              <div class="quote-value" id="q-vehicle">&mdash;</div>
+            </div>
+            <div>
+              <div class="quote-label">Passengers</div>
+              <div class="quote-value" id="q-passengers">&mdash;</div>
+            </div>
+          </div>
+
+          <div style="border-top:1px dashed var(--rm-line); margin:28px 0; padding-top:24px; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:var(--font-display); font-weight:600; color:var(--rm-ink-soft);">Total quoted price</span>
+            <span style="font-family:var(--font-display); font-weight:800; font-size:1.8rem; color:var(--rm-charcoal);" id="q-price">&mdash;</span>
+          </div>
+
+          <details style="margin-bottom:8px;">
+            <summary style="cursor:pointer; font-weight:600; font-size:0.88rem; color:var(--rm-ink-soft);">Terms &amp; conditions</summary>
+            <p class="small muted" style="margin-top:10px;">Quotation valid for 7 days from issue. Cross-border trips are priced per the distance bands on our Pricing page. Final price may be adjusted if trip details change materially from what was requested.</p>
+          </details>
+        </div>
+      </div>
+
+      <div id="quote-actions" class="flex gap-12 flex-wrap" style="margin-top:24px;">
+        <button id="btn-accept" class="btn btn-primary">Accept quotation</button>
+        <button id="btn-reject" class="btn btn-outline">Reject quotation</button>
+      </div>
+
+      <div id="quote-accepted" class="card hidden text-center" style="margin-top:24px; padding:36px;">
+        <div style="width:56px; height:56px; border-radius:50%; background:var(--rm-green-bg); display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-size:1.5rem; color:var(--rm-green);">&#10003;</div>
+        <h3>Booking confirmed</h3>
+        <p class="muted">Thanks &mdash; your trip is booked. We'll assign a driver and vehicle and send a tracking link before departure.</p>
+        <a href="tracking.html?ref=RM-2026-0001" class="btn btn-primary">See a live tracking demo</a>
+      </div>
+
+      <div id="quote-rejected" class="card hidden text-center" style="margin-top:24px; padding:36px;">
+        <h3>Quotation declined</h3>
+        <p class="muted">No problem &mdash; let us know if your dates or budget change and we can requote.</p>
+        <a href="booking.html" class="btn btn-outline">Start a new booking</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="brand" style="margin-bottom:14px;">
+            <img src="assets/logo_final.png" alt="RoadMaster logo">
+            <span class="brand-name">RoadMaster<small>Taxi &amp; For Hire Services</small></span>
+          </a>
+          <p>Taxi, 7-seater, truck and cross-border transportation based in Matsapha, Eswatini.</p>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Get around</h4>
+          <ul class="footer-links">
+            <li><a href="booking.html">Book a Trip</a></li>
+            <li><a href="tracking.html">Track My Trip</a></li>
+            <li><a href="cross-border.html">Cross-Border Travel</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>2nd Floor, Office No. 3<br>Mhlakuvane Street, Ndlavela House<br>Manzini, Eswatini</p>
+          <p>7819 7490 &middot; 7934 0717<br>roadmaster865@gmail.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 RoadMaster Taxi and For Hire Services Company.</span>
+        <span>Stage 1 demo build &mdash; not a live booking system.</span>
+      </div>
+    </div>
+  </footer>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const ref = rmQueryParam('ref');
+  const booking = ref ? RM.getBooking(ref) : null;
+
+  if (!booking) {
+    document.getElementById('quote-not-found').classList.remove('hidden');
+    return;
+  }
+  document.getElementById('quote-content').classList.remove('hidden');
+
+  document.getElementById('q-ref-top').textContent = booking.ref;
+  document.getElementById('q-status-pill').innerHTML = rmStatusPill(booking.status);
+  document.getElementById('q-customer').textContent = booking.customer.name;
+  document.getElementById('q-service').textContent = booking.service;
+  document.getElementById('q-route').textContent = `${booking.pickup} \u2192 ${booking.destination}`;
+  document.getElementById('q-dates').textContent = booking.travelDate + (booking.returnDate ? ` \u2013 ${booking.returnDate}` : '') + ` (${booking.tripType})`;
+  const veh = RM.vehicleById(booking.vehicleId);
+  document.getElementById('q-vehicle').textContent = veh ? veh.name : 'To be assigned';
+  document.getElementById('q-passengers').textContent = booking.passengers || '\u2014';
+  document.getElementById('q-price').textContent = booking.price || 'Pending';
+
+  const actions = document.getElementById('quote-actions');
+  const acceptedPanel = document.getElementById('quote-accepted');
+  const rejectedPanel = document.getElementById('quote-rejected');
+
+  if (booking.status === 'confirmed' || booking.status === 'completed') {
+    actions.classList.add('hidden');
+    acceptedPanel.classList.remove('hidden');
+    acceptedPanel.querySelector('a').href = `tracking.html?ref=${encodeURIComponent(booking.ref)}`;
+  } else if (booking.status === 'cancelled' || booking.status === 'rejected') {
+    actions.classList.add('hidden');
+    rejectedPanel.classList.remove('hidden');
+  } else if (booking.status === 'pending') {
+    actions.classList.add('hidden');
+  }
+
+  document.getElementById('btn-accept').addEventListener('click', () => {
+    RM.updateBooking(booking.ref, { status: 'confirmed' }, { actor: 'Customer', text: 'Quotation accepted.' });
+    RM.addLog(booking.ref, { actor: booking.customer.pref === 'email' ? 'Email' : 'WhatsApp', text: 'Booking confirmation sent.' });
+    actions.classList.add('hidden');
+    document.getElementById('q-status-pill').innerHTML = rmStatusPill('confirmed');
+    acceptedPanel.classList.remove('hidden');
+    acceptedPanel.querySelector('a').href = `tracking.html?ref=${encodeURIComponent(booking.ref)}`;
+    rmToast('Quotation accepted.');
+  });
+  document.getElementById('btn-reject').addEventListener('click', () => {
+    RM.updateBooking(booking.ref, { status: 'rejected' }, { actor: 'Customer', text: 'Quotation rejected.' });
+    actions.classList.add('hidden');
+    document.getElementById('q-status-pill').innerHTML = rmStatusPill('rejected');
+    rejectedPanel.classList.remove('hidden');
+    rmToast('Quotation declined.', 'info');
+  });
+});
+</script>
+</body>
+</html>

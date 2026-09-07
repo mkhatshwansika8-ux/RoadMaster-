@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services | RoadMaster</title>
+<meta name="description" content="RoadMaster services: taxi, 7-seater, truck, business travel, conference transport and cross-border transport.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<style>
+.service-detail {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 48px;
+  align-items: center;
+}
+.service-detail.reverse { grid-template-columns: 1.1fr 0.9fr; }
+.service-detail.reverse img { order: 2; }
+.service-detail img { width: 100%; height: 320px; object-fit: cover; border-radius: var(--radius-m); }
+.service-detail .pill { margin-bottom: 14px; }
+@media (max-width: 820px) {
+  .service-detail, .service-detail.reverse { grid-template-columns: 1fr; }
+  .service-detail.reverse img { order: 0; }
+  .service-detail img { height: 240px; }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <img src="assets/logo_final.png" alt="RoadMaster Taxi and For Hire Services Company logo">
+        <span class="brand-name">RoadMaster<small>Taxi &amp; For Hire Services</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="vehicles.html">Vehicles</a>
+        <a href="cross-border.html">Cross-Border</a>
+        <a href="team.html">Team</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-cta">
+        <a href="tracking.html" class="btn btn-outline btn-sm">Track Trip</a>
+        <a href="booking.html" class="btn btn-primary btn-sm">Book a Trip</a>
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="vehicles.html">Vehicles</a>
+      <a href="cross-border.html">Cross-Border</a>
+      <a href="team.html">Team</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="contact.html">Contact</a>
+      <a href="tracking.html">Track My Trip</a>
+      <a href="booking.html" style="color:#E8850A;">Book a Trip</a>
+    </div>
+  </header>
+<main id="main">
+
+<section style="padding-top:56px; padding-bottom:40px;">
+  <div class="container">
+    <div class="route-dash"><span>Services</span></div>
+    <h1>Six ways to book a RoadMaster vehicle</h1>
+    <p style="max-width:60ch;">Every trip starts the same way &mdash; tell us the route and dates &mdash; but the vehicle and pricing depend on what you're moving and how far it's going.</p>
+  </div>
+</section>
+
+<section id="taxi" style="padding-top:24px;">
+  <div class="container">
+    <div class="service-detail">
+      <img src="assets/img/vehicle-sedan.jpg" alt="RoadMaster sedan at the Ngwenya Border Post">
+      <div>
+        <span class="pill pill-neutral">01</span>
+        <h3>Taxi</h3>
+        <p>Sedan transport for individual and small trips &mdash; airport runs, town errands, and point-to-point travel around Manzini and beyond. This is the fastest vehicle class to book for a single passenger or a small group of up to four.</p>
+        <a href="booking.html" class="btn btn-outline">Book a taxi</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="seven-seater" style="background:var(--rm-paper-dim);">
+  <div class="container">
+    <div class="service-detail reverse">
+      <img src="assets/img/vehicle-7seater-2.jpg" alt="RoadMaster 7-seater van parked at a hotel">
+      <div>
+        <span class="pill pill-neutral">02</span>
+        <h3>7-Seater</h3>
+        <p>Our VW 7-seaters cover family travel, small group transport, and conference or business trip transfers where a sedan is too small. They're also the vehicle used for most of our cross-border runs.</p>
+        <a href="booking.html" class="btn btn-outline">Book a 7-seater</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="truck">
+  <div class="container">
+    <div class="service-detail">
+      <img src="assets/img/vehicle-truck.jpg" alt="RoadMaster mini truck loaded with furniture">
+      <div>
+        <span class="pill pill-neutral">03</span>
+        <h3>Truck</h3>
+        <p>Mini trucks for furniture removals, goods transport and general freight. Because load size and distance vary so much, truck jobs are priced with a direct quote based on your destination rather than a flat day rate.</p>
+        <a href="booking.html" class="btn btn-outline">Request a truck quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="business" style="background:var(--rm-paper-dim);">
+  <div class="container">
+    <div class="service-detail reverse">
+      <img src="assets/img/vehicle-7seater-hero.jpg" alt="RoadMaster branded vehicle at night">
+      <div>
+        <span class="pill pill-neutral">04</span>
+        <h3>Business trips</h3>
+        <p>Companies book RoadMaster for staff travel between towns, site visits, and airport transfers. Email is typically the preferred communication channel for business bookings, since it keeps a written quotation and confirmation on record.</p>
+        <a href="booking.html" class="btn btn-outline">Book business travel</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="conference">
+  <div class="container">
+    <div class="service-detail">
+      <img src="assets/img/vehicle-fleet.jpg" alt="RoadMaster fleet of vehicles" >
+      <div>
+        <span class="pill pill-neutral">05</span>
+        <h3>Conference &amp; group transport</h3>
+        <p>For delegations and group bookings, we can coordinate several vehicles from our fleet on the same route and schedule, with one point of contact for the whole group's booking.</p>
+        <a href="booking.html" class="btn btn-outline">Enquire for a group</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cross-border-service" style="background:var(--rm-paper-dim);">
+  <div class="container">
+    <div class="service-detail reverse">
+      <img src="assets/img/mozambique-hotel.jpg" alt="Hotel in Maputo, Mozambique">
+      <div>
+        <span class="pill pill-neutral">06</span>
+        <h3>Cross-border transport</h3>
+        <p>Regular trips into Mozambique and the wider SADC region, for both individual travellers and business delegations. See the Cross-Border page for route details and the Pricing page for distance-based fees.</p>
+        <a href="cross-border.html" class="btn btn-outline">See cross-border details</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--rm-charcoal); padding:64px 0;">
+  <div class="container text-center">
+    <h2 style="color:#fff; margin-bottom:14px;">Not sure which service fits your trip?</h2>
+    <p class="muted" style="color:#9AA1AC; margin:0 auto 28px;">Send a booking request with your route and dates &mdash; we'll match you to the right vehicle and quote it from there.</p>
+    <a href="booking.html" class="btn btn-primary">Start a booking</a>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="brand" style="margin-bottom:14px;">
+            <img src="assets/logo_final.png" alt="RoadMaster logo">
+            <span class="brand-name">RoadMaster<small>Taxi &amp; For Hire Services</small></span>
+          </a>
+          <p>Taxi, 7-seater, truck and cross-border transportation based in Matsapha, Eswatini.</p>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Get around</h4>
+          <ul class="footer-links">
+            <li><a href="booking.html">Book a Trip</a></li>
+            <li><a href="tracking.html">Track My Trip</a></li>
+            <li><a href="cross-border.html">Cross-Border Travel</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>2nd Floor, Office No. 3<br>Mhlakuvane Street, Ndlavela House<br>Manzini, Eswatini</p>
+          <p>7819 7490 &middot; 7934 0717<br>roadmaster865@gmail.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 RoadMaster Taxi and For Hire Services Company.</span>
+        <span>Stage 1 demo build &mdash; not a live booking system.</span>
+      </div>
+    </div>
+  </footer>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
